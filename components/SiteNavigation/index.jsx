@@ -9,7 +9,7 @@ export default function SiteNavigation() {
 
   const router = useRouter()
   const navigation = [
-    { name: 'New', Icon: PlusCircleIcon, href: '/addPost', current: router.pathname === '/addPost' },
+    { name: 'New', Icon: PlusCircleIcon, href: '/createPost', current: router.pathname === '/createPost' },
   ]
 
   const handleSearch = (text) => {

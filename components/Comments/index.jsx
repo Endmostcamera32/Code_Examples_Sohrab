@@ -9,7 +9,7 @@ export default function Comments({ comments, className }) {
           className='my-6 border-t border-gray-600 pt-6'
         >
           <Comment
-          className="px-6"
+            className="px-6"
             key={comment.id}
             comment={comment}
             user={comment.user}
