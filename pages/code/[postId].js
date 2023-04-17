@@ -56,7 +56,7 @@ export async function getStaticProps(context) {
   };
 }
 
-export default function Post({ id }) {
+export default function Post({ id, postData }) {
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const { data: session } = useSession();
@@ -118,7 +118,7 @@ export default function Post({ id }) {
     return (
       <>
         <PostComponent
-          user={post.user}
+          user={postData.user}
           post={post}
           onComment={handleGoToPost}
           onLike={handleOnLike}
@@ -128,11 +128,11 @@ export default function Post({ id }) {
     );
   } else {
     async function handleSubmit({ comment }) {
-      // console.log(session.user)
+      console.log(session.user)
       await axios
         .post("/api/addComment", {
           inputText: comment,
-          user: post.user,
+          user: session.user,
           postId: post.postId,
         })
         .then((res) => {
@@ -150,11 +150,11 @@ export default function Post({ id }) {
     return (
       <>
         <PostComponent
-          user={session.user}
+          user={postData.user}
           post={post}
           onComment={handleGoToPost}
           onLike={handleOnLike}
-          
+
         />
         <CommentForm onSubmit={handleSubmit} user={session.user} />
         <Comments comments={comments} />
