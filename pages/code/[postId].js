@@ -154,7 +154,6 @@ export default function Post({ id }) {
           post={post}
           onComment={handleGoToPost}
           onLike={handleOnLike}
-
         />
         <CommentForm onSubmit={handleSubmit} user={session.user} />
         <Comments comments={comments} />
